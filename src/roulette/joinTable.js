@@ -331,12 +331,27 @@ module.exports.findEmptySeatAndUserSeat = async (table, client, requestData) => 
 //     return '-1'; // No empty seats available
 // };
 
+
+// module.exports.findEmptySeat = (playerInfo) => {
+//     for (x in playerInfo) {
+//         if (typeof playerInfo[x] == 'object' && playerInfo[x] != null && typeof playerInfo[x].seatIndex == 'undefined') {
+//             return parseInt(x);
+//             break;
+//         }
+//     }
+//     return '-1';
+// }
+
 module.exports.findEmptySeat = (playerInfo) => {
-    for (x in playerInfo) {
-        if (typeof playerInfo[x] == 'object' && playerInfo[x] != null && typeof playerInfo[x].seatIndex == 'undefined') {
-            return parseInt(x);
-            break;
+    let maxSeatIndex = -1;
+
+    playerInfo.forEach(player => {
+        if (player && typeof player.seatIndex !== 'undefined') {
+            if (player.seatIndex > maxSeatIndex) {
+                maxSeatIndex = player.seatIndex;
+            }
         }
-    }
-    return '-1';
-}
+    });
+
+    return maxSeatIndex + 1;
+};
