@@ -1,0 +1,119 @@
+
+Hostinger 
+UN : dealregal36@gmail.com
+PWD: Changeme36!
+
+Domain - namecheap
+UN : Dealregal
+PWD : Changeme3!
+
+
+Putty Login
+User root 
+PWD  Changeme3@ 
+
+
+
+sudo certbot certonly --standalone -d dealregal.com 
+
+
+sudo certbot --nginx -d dealregal.com -d www.dealregal.com
+
+Certificate is saved at: /etc/letsencrypt/live/dealregal.com/fullchain.pem
+Key is saved at:         /etc/letsencrypt/live/dealregal.com/privkey.pem
+
+
+sudo mkdir -p /var/www/dealregal.com/html
+
+
+sudo chown -R $USER:$USER /var/www/dealregal.com/html
+
+sudo chmod -R 755 /var/www/dealregal.com
+
+nano /var/www/dealregal.com/html/index.html
+
+
+sudo nano /etc/nginx/sites-available/dealregal.com
+
+
+sudo nano /etc/nginx/sites-available/dealregal.com
+
+
+sudo ln -s /etc/nginx/sites-available/dealregal.com /etc/nginx/sites-enabled/
+
+server {
+        listen 80;
+        listen [::]:80;
+
+        root /var/www/dealregal.com/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name dealregal.com www.dealregal.com;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+
+
+
+#
+root /var/www/dealregal.com/html/deal-reagl-website;
+
+
+sudo chown -R $USER:$USER /var/www/dealregal.com/html
+
+
+sudo chmod -R 755 /var/www/dealregal.com
+
+
+sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/dealregal.com.conf
+
+sudo nano /etc/apache2/sites-available/dealregal.com.conf
+
+
+ServerName dealregal.com
+ServerAlias www.dealregal.com
+
+sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/your_domain_1.conf
+
+
+sudo a2ensite dealregal.com.conf
+
+
+127.0.0.1 dealregal.com
+
+
+
+/var/www/dealregal.com/html/deal-reagl-website/
+
+// Mongodb 
+
+
+
+db.createUser({user: "Admin",pwd: "Changeme3@",roles: [ { role: "userAdminAnyDatabase", db: "dealregal" }, "readWriteAnyDatabase" ]})
+
+db.createUser({user: "dealregaluser",pwd: "Changeme3@",roles: [ { role: "readWrite", db: "dealregal" } ]})
+
+db name : dealregal
+user name : dealregaluser
+pwd :  Changeme3@
+
+
+
+
+/var/www/dealregal.com/html/deal-reagl-website
+
+sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/dealregal.com.conf
+sudo nano /etc/apache2/sites-available/dealregal.com.conf
+
+
+
+sudo a2ensite dealregal.com.conf
+
+
+(node:3238) [DEP0170] DeprecationWarning:
+ The URL mongodb://luckyhit:YQVdVhFgC5bTnUEJ@ac-svkedgw-shard-00-02.irxvop7.mongodb.net:27017,
+ ac-svkedgw-shard-00-00.irxvop7.mongodb.net:27017,ac-svkedgw-shard-00-01.irxvop7.mongodb.net:27017/?authSource=admin&replicaSet=atlas-6qcoxw-shard-0
+ &retryWrites=true&w=majority&ssl=true is invalid. Future versions of Node.js will throw an error.
+(Use `node --trace-deprecation ...` to show where the warning was created)
