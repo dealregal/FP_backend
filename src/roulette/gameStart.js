@@ -403,6 +403,7 @@ module.exports.winnerSpinner = async (tabInfo) => {
                         if (betObjectData[i].type == "number" && betObjectData[i].number.indexOf(itemIndex) != -1) {
                             winnerData.push({
                                 uid: tbInfo.playerInfo[x]._id,
+                                uuid: tbInfo.playerInfo[x].uuid,
                                 seatIndex: 0,
                                 winAmount: betObjectData[i].bet * 35,
                             })
@@ -660,181 +661,11 @@ module.exports.winnerSpinner = async (tabInfo) => {
         }
         console.log("updated uuid ",tbInfo.playerInfo[x].uuid);
         console.log("itemIndex ", itemIndex)
-        // for (let i = 0; i < tbInfo.playerInfo.length; i++) {
-        //     if(tbInfo.playerInfo[i].seatIndex != undefined){
-
-        //         var TotalWinAmount = 0 
-        //         if(tbInfo.playerInfo[i].selectObj[itemIndex] != 0){
-        //             winnerData.push({
-        //                 uid:tbInfo.playerInfo[i]._id,
-        //                 seatIndex:tbInfo.playerInfo[i].seatIndex,
-        //                 winAmount:tbInfo.playerInfo[i].selectObj[itemIndex] * 35,
-        //             })
-
-        //             TotalWinAmount = tbInfo.playerInfo[i].selectObj[itemIndex] * 35;
-        //         }
-        //         // [
-        //         //     "0","1","2","3","4",
-        //         //     "5","6","7","8","9",
-        //         //     "10","11","12","13","14",
-        //         //     "15","16","17","18","19",
-        //         //     "20","21","22","23","24",
-        //         //     "25","26","27","28","29",
-        //         //     "30","31","32","33","34",
-        //         //     "35","36",
-        //         //     "1 to 34" , "2 - 35" , "3 - 36",   
-        //         //     "1st12","2nd12","3rd12",
-        //         //     "1to18","19to36",
-        //         //     "odd","even",
-        //         //     "red","black"
-        //         //      37,38,39,
-        //         //      40,41,42
-        //         //      43,44,
-        //         //      45,46   
-        //         //      47 48       
-        //         // ]
-
-        //         // 1 to 34 
-        //         if(tbInfo.playerInfo[i].selectObj[37] != 0 && [1,4,7,10,13,16,19,22,25,28,31,34].indexOf(itemIndex) != -1){
-        //             winnerData.push({
-        //                 uid:tbInfo.playerInfo[i]._id,
-        //                 seatIndex:tbInfo.playerInfo[i].seatIndex,
-        //                 winAmount:tbInfo.playerInfo[i].selectObj[37] * 2,
-        //             })
-        //             TotalWinAmount = TotalWinAmount + tbInfo.playerInfo[i].selectObj[37] * 2;
-        //         }
-
-        //         //2 to 35
-        //         if(tbInfo.playerInfo[i].selectObj[38] != 0 && [2,5,8,11,14,17,20,23,26,29,32,35].indexOf(itemIndex) != -1){
-        //             winnerData.push({
-        //                 uid:tbInfo.playerInfo[i]._id,
-        //                 seatIndex:tbInfo.playerInfo[i].seatIndex,
-        //                 winAmount:tbInfo.playerInfo[i].selectObj[38] * 2,
-        //             })
-        //             TotalWinAmount = TotalWinAmount + tbInfo.playerInfo[i].selectObj[38] * 2;
-        //         }
-
-        //         //3 to 36
-        //         if(tbInfo.playerInfo[i].selectObj[39] != 0 && [3,6,9,12,15,18,21,24,27,30,33,36].indexOf(itemIndex) != -1){
-        //             winnerData.push({
-        //                 uid:tbInfo.playerInfo[i]._id,
-        //                 seatIndex:tbInfo.playerInfo[i].seatIndex,
-        //                 winAmount:tbInfo.playerInfo[i].selectObj[39] * 2,
-        //             })
-        //             TotalWinAmount = TotalWinAmount + tbInfo.playerInfo[i].selectObj[39] * 2;
-        //         }
-
-        //         //1 to 12
-        //         if(tbInfo.playerInfo[i].selectObj[40] != 0 && itemIndex >= 1  && itemIndex <= 12){
-        //             winnerData.push({
-        //                 uid:tbInfo.playerInfo[i]._id,
-        //                 seatIndex:tbInfo.playerInfo[i].seatIndex,
-        //                 winAmount:tbInfo.playerInfo[i].selectObj[40] * 2,
-        //             })
-        //             TotalWinAmount = TotalWinAmount + tbInfo.playerInfo[i].selectObj[40] * 2;
-        //         }
-
-        //         //13 to 24
-        //         if(tbInfo.playerInfo[i].selectObj[41] != 0 && itemIndex >= 13  && itemIndex <= 24){
-        //             winnerData.push({
-        //                 uid:tbInfo.playerInfo[i]._id,
-        //                 seatIndex:tbInfo.playerInfo[i].seatIndex,
-        //                 winAmount:tbInfo.playerInfo[i].selectObj[41] * 2,
-        //             })
-        //             TotalWinAmount = TotalWinAmount + tbInfo.playerInfo[i].selectObj[41] * 2;
-        //         }
-
-        //         //25 to 36
-        //         if(tbInfo.playerInfo[i].selectObj[42] != 0 && itemIndex >= 25  && itemIndex <= 36){
-        //             winnerData.push({
-        //                 uid:tbInfo.playerInfo[i]._id,
-        //                 seatIndex:tbInfo.playerInfo[i].seatIndex,
-        //                 winAmount:tbInfo.playerInfo[i].selectObj[42] * 2,
-        //             })
-        //             TotalWinAmount = TotalWinAmount + tbInfo.playerInfo[i].selectObj[42] * 2;
-        //         }
-
-        //         //1 to 18
-        //         if(tbInfo.playerInfo[i].selectObj[43] != 0 && itemIndex >= 1  && itemIndex <= 18){
-        //             winnerData.push({
-        //                 uid:tbInfo.playerInfo[i]._id,
-        //                 seatIndex:tbInfo.playerInfo[i].seatIndex,
-        //                 winAmount:tbInfo.playerInfo[i].selectObj[43] * 2,
-        //             })
-        //             TotalWinAmount = TotalWinAmount + tbInfo.playerInfo[i].selectObj[43] * 2;
-        //         }
-
-        //         //19 to 36
-        //         if(tbInfo.playerInfo[i].selectObj[44] != 0 && itemIndex >= 18  && itemIndex <= 36){
-        //             winnerData.push({
-        //                 uid:tbInfo.playerInfo[i]._id,
-        //                 seatIndex:tbInfo.playerInfo[i].seatIndex,
-        //                 winAmount:tbInfo.playerInfo[i].selectObj[44] * 2,
-        //             })
-        //             TotalWinAmount = TotalWinAmount + tbInfo.playerInfo[i].selectObj[44] * 2;
-        //         }
-
-        //         // Odd 
-        //         if(tbInfo.playerInfo[i].selectObj[45] != 0 && itemIndex%2 == 1){
-        //             winnerData.push({
-        //                 uid:tbInfo.playerInfo[i]._id,
-        //                 seatIndex:tbInfo.playerInfo[i].seatIndex,
-        //                 winAmount:tbInfo.playerInfo[i].selectObj[45] * 2,
-        //             })
-        //             TotalWinAmount = TotalWinAmount + tbInfo.playerInfo[i].selectObj[45] * 2;
-        //         }
-
-        //         // Even
-        //         if(tbInfo.playerInfo[i].selectObj[46] != 0 && itemIndex%2 == 0){
-        //             winnerData.push({
-        //                 uid:tbInfo.playerInfo[i]._id,
-        //                 seatIndex:tbInfo.playerInfo[i].seatIndex,
-        //                 winAmount:tbInfo.playerInfo[i].selectObj[46] * 2,
-        //             })
-        //             TotalWinAmount = TotalWinAmount + tbInfo.playerInfo[i].selectObj[46] * 2;
-        //         }
-
-        //         // Red
-        //         if(tbInfo.playerInfo[i].selectObj[47] != 0 && [1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36].indexOf(itemIndex) != -1){
-        //             winnerData.push({
-        //                 uid:tbInfo.playerInfo[i]._id,
-        //                 seatIndex:tbInfo.playerInfo[i].seatIndex,
-        //                 winAmount:tbInfo.playerInfo[i].selectObj[47] * 2,
-        //             })
-        //             TotalWinAmount = TotalWinAmount + tbInfo.playerInfo[i].selectObj[47] * 2;
-        //         }
-        //         //Black
-        //         if(tbInfo.playerInfo[i].selectObj[48] != 0 && [2,4,6,8,10,11,13,15,17,20,22,24,26,28,29,31,33,35].indexOf(itemIndex) != -1){
-        //             winnerData.push({
-        //                 uid:tbInfo.playerInfo[i]._id,
-        //                 seatIndex:tbInfo.playerInfo[i].seatIndex,
-        //                 winAmount:tbInfo.playerInfo[i].selectObj[48] * 2,
-        //             })
-        //             TotalWinAmount = TotalWinAmount + tbInfo.playerInfo[i].selectObj[48] * 2;
-        //         }
-
-        //         // 49 to 105 
-
-        //         console.log("TotalWinAmount ",TotalWinAmount)
-
-        //         TotalWinAmount != 0 && await walletActions.addWalletAdmin(tbInfo.playerInfo[i]._id, Number(TotalWinAmount), 4, "Roulette Win", tabInfo,"","","roulette");
-        //     }
-        // }
+        
 
 
         const playerInGame = await roundStartActions.getPlayingUserInRound(tbInfo.playerInfo);
         logger.info("getWinner playerInGame ::", playerInGame);
-
-
-
-        //const winnerTrack = await gameTrackActions.gamePlayTracks(winnerIndexs, tbInfo.gameTracks, tbInfo);
-        //logger.info("winnerDeclareCall winnerTrack:: ", winnerTrack);
-
-        // for (let i = 0; i < tbInfo.gameTracks.length; i++) {
-        //     if (tbInfo.gameTracks[i].playStatus == "win") {
-        //         await walletActions.addWalletAdmin(tbInfo.gameTracks[i]._id, Number(winnerTrack.winningAmount), 4, "Sorat Win", tabInfo);
-        //     }
-        // }
 
 
         commandAcions.sendEventInTable(tbInfo._id.toString(), CONST.ROULETTEWINNER, {
