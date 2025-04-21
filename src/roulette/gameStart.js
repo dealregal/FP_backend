@@ -403,7 +403,6 @@ module.exports.winnerSpinner = async (tabInfo) => {
                         if (betObjectData[i].type == "number" && betObjectData[i].number.indexOf(itemIndex) != -1) {
                             winnerData.push({
                                 uid: tbInfo.playerInfo[x]._id,
-                                uuid: tbInfo.playerInfo[x].uuid,
                                 seatIndex: 0,
                                 winAmount: betObjectData[i].bet * 35,
                             })

@@ -49,18 +49,6 @@ const gameReJoinRouletteUserChecks = async (payload,client) => {
         let tableInfo = await RouletteTables.findOne(gwh1, { "playerInfo.$": 1 }).lean();
                 
         if (tableInfo) {
-            if (tableInfo.playerInfo && tableInfo.playerInfo.length > 0) {
-                let player = tableInfo.playerInfo[0];
-            
-                if (player.uuid !== payload.uuid) {
-                    // Player trying to join an active session with different uuid
-                    commandAcions.sendEvent(client, CONST.ROULETTE_GAME_PLAYGAME, {
-                        error: 1,
-                        message: "Session mismatch. Try rejoining properly.",
-                    });
-                    return;
-                }
-            }
             if(isUsersBets(tableInfo.playerInfo,payload.playerId)){
                 commandAcions.sendEvent(client, CONST.ROULETTE_GAME_PLAYGAME, {
                     isAbleToJoin:0,
